@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <script>
+      if (localStorage) {
+        $(document).ready(function () {
+          $(".save").click(function () {
+            var fName = $("#firstName").val();
+            localStorage.setItem("first_name", fName);
+          });
+          $(".access").click(function () {
+            alert(`Hi` + localStorage.getItem("first_name"));
+          });
+          $(".clear").click(function () {
+            localStorage.setItem("first_name", "");
+          });
+        });
+        alert("local storage is not empty");
+      } else {
+        alert("local storage is empty");
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" id="firstName" />
+      <button type="button" class="save">Store Name (Local Storage)</button>
+      <button type="button" class="save">Get Name (Local Storage)</button>
+      <button type="button" class="save">Clear Name (Local Storage)</button>
+    </form>
+  </body>
+</html>
