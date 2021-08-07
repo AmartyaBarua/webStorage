@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body onload="checkCookie()">
+    <button type="button" onclick="createCookie()">Set Cookie</button>
+    <button type="button" onclick="accessCookie()">Get Cookie</button>
+    <script>
+      function createCookie(cokkieName, cookieValue, daysToExpire) {
+        var date = new Date();
+        date.setTime(date.getTime + daysToExpire * 24 * 3600 * 1000);
+
+        document.cookie = `${cookieName}=${cookieValue};expires=${date.toString()}`;
+        alert("Your cookie is saved now...");
+      }
+
+      function accessCookie(cookieName) {
+        var name = cookieName + "=";
+        var all_cookies = document.cookie.split(";");
+        for (var i = 0; i < all_cookies; i++) {
+          var ck = all_cookies[i].trim();
+          if (ck.indexOf(cookieName) == 0) {
+            return ck.substring(cookieName.length, ck.length);
+          }
+        }
+      }
+
+      function checkCookie() {
+        var user = accessCookie("age");
+        if (user != "") {
+          alert("Welcome " + user);
+        } else {
+          var value = prompt("Enter Your age: ");
+        }
+      }
+    </script>
+  </body>
+</html>
